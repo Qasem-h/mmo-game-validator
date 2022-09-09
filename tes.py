@@ -1,5 +1,5 @@
 from MMOGameValidator import get_validation_rules
-from MMOGameValidator import InvalidAddress, normalize_address , format_address
+from MMOGameValidator import InvalidCharacter, normalize_character , format_character
 
 
 
@@ -11,13 +11,12 @@ addr = {
     'game_code': 'WCW',
     'game_region': 'US',
     'region_servers': 'Ashkandi',
-    'character_name': 'qasemhakà',
-    'street_address': '1600 Amphitheatre Pkwy'}
+    'character_name': 'qasemhakà'}
 try:
-    address = normalize_address(addr)
+    character = normalize_character(addr)
     
-    print(address)
-    # print(format_address(address,latin=True ))
+    print(character)
+    # print(format_character(character,latin=True ))
     
-except InvalidAddress as e:
+except InvalidCharacter as e:
     print(e.errors)
