@@ -1,8 +1,8 @@
 {
-    "LA": {
+    "NW": {
       "fmt": "%O%n%N%n%A%n%D%n%C-%S%n%Z",
-      "id": "data/LA",
-      "key": "LA",
+      "id": "data/NW",
+      "key": "NW",
       "lang": "en",
       "languages": "en",
       "name": "Lost Ark",
@@ -15,133 +15,132 @@
       "sub_mores": "true~true~true~true~true",
       "sub_names": "US West~US East~Sa East~Europe Central~Ap Southeast",
       "upper": "CS",
-      "zip": "^[-'a-zÀ-ÿ]{2,12}$"
+      "zip": "[-'a-zÀ-ÿ]{2,12}$"
     },
-    "LA/USW": {
-          "id": "data/LA/USW",
+    "NW/USW": {
+          "id": "data/NW/USW",
           "isoid": "USW",
           "key": "USW",
           "lang": "en",
           "name": "US West",
           "sub_keys": "El Dorado~Yggdrasil"
         },
-        "LA/USW/El Dorado": {
-          "id": "data/LA/USW/El Dorado",
+        "NW/USW/El Dorado": {
+          "id": "data/NW/USW/El Dorado",
           "key": "El Dorado",
           "sub_isoids": "EDO",
           "lang": "en"
         },
-        "LA/USW/Yggdrasil": {
-          "id": "data/LA/USW/Yggdrasil",
+        "NW/USW/Yggdrasil": {
+          "id": "data/NW/USW/Yggdrasil",
           "key": "Yggdrasil",
           "sub_isoids": "YGL",
           "lang": "en"
         },
-    "LA/USE": {
-          "id": "data/LA/USE",
+    "NW/USE": {
+          "id": "data/NW/USE",
           "isoid": "USE",
           "key": "USE",
           "lang": "en",
           "name": "US East",
           "sub_keys": "Castle of Steel~Maramma~Orofena~Valhalla"
         },
-        "LA/USE/Castle of Steel": {
-            "id": "data/LA/USE/Castle of Steel",
+        "NW/USE/Castle of Steel": {
+            "id": "data/NW/USE/Castle of Steel",
             "key": "Castle of Steel",
             "sub_isoids": "CSL",
             "lang": "en"
           },
-          "LA/USE/Maramma": {
-            "id": "data/LA/USE/Maramma",
+          "NW/USE/Maramma": {
+            "id": "data/NW/USE/Maramma",
             "key": "Maramma",
             "sub_isoids": "MMA",
             "lang": "en"
           },
-          "LA/USE/Orofena": {
-            "id": "data/LA/USE/Orofena",
+          "NW/USE/Orofena": {
+            "id": "data/NW/USE/Orofena",
             "key": "Orofena",
             "sub_isoids": "ORA",
             "lang": "en"
           },
-          "LA/USE/Valhalla": {
-            "id": "data/LA/USE/Valhalla",
+          "NW/USE/Valhalla": {
+            "id": "data/NW/USE/Valhalla",
             "key": "Valhalla",
             "sub_isoids": "VAA",
             "lang": "en"
           },
-    "LA/SAE": {
-            "id": "data/LA/SAE",
+    "NW/SAE": {
+            "id": "data/NW/SAE",
             "isoid": "SAE",
             "key": "SAE",
             "lang": "en",
             "name": "Sa East",
             "sub_keys": "Devaloka"
           },
-          "LA/SAE/Devaloka": {
-            "id": "data/LA/SAE/Devaloka",
+          "NW/SAE/Devaloka": {
+            "id": "data/NW/SAE/Devaloka",
             "key": "Devaloka",
             "sub_isoids": "DVA",
             "lang": "en"
           },
-    "LA/EUC": {
-            "id": "data/LA/EUC",
+    "NW/EUC": {
+            "id": "data/NW/EUC",
             "isoid": "EUC",
             "key": "EUC",
             "lang": "en",
             "name": "Europe Central",
             "sub_keys": "Aaru~Abaton~Barri~Dry Tree~Nysa~Tartarus"
           },
-          "LA/EUC/Aaru": {
-            "id": "data/LA/EUC/Aaru",
+          "NW/EUC/Aaru": {
+            "id": "data/NW/EUC/Aaru",
             "key": "Aaru",
             "sub_isoids": "AAU",
             "lang": "en"
           },
-          "LA/EUC/Abaton": {
-            "id": "data/LA/EUC/Abaton",
+          "NW/EUC/Abaton": {
+            "id": "data/NW/EUC/Abaton",
             "key": "Abaton",
             "sub_isoids": "ABN",
             "lang": "en"
           },
-          "LA/EUC/Barri": {
-            "id": "data/LA/EUC/Barri",
+          "NW/EUC/Barri": {
+            "id": "data/NW/EUC/Barri",
             "key": "Barri",
             "sub_isoids": "BAI",
             "lang": "en"
           },
-          "LA/EUC/Dry Tree": {
-            "id": "data/LA/EUC/Dry Tree",
+          "NW/EUC/Dry Tree": {
+            "id": "data/NW/EUC/Dry Tree",
             "key": "Dry Tree",
             "sub_isoids": "DTE",
             "lang": "en"
           },
-          "LA/EUC/Nysa": {
-            "id": "data/LA/EUC/Nysa",
+          "NW/EUC/Nysa": {
+            "id": "data/NW/EUC/Nysa",
             "key": "Nysa",
             "sub_isoids": "NYA",
             "lang": "en"
           },
-          "LA/EUC/Tartarus": {
-            "id": "data/LA/EUC/Tartarus",
+          "NW/EUC/Tartarus": {
+            "id": "data/NW/EUC/Tartarus",
             "key": "Tartarus",
             "sub_isoids": "TAS",
             "lang": "en"
           },
-          "LA/APS": {
-            "id": "data/LA/APS",
+          "NW/APS": {
+            "id": "data/NW/APS",
             "isoid": "APS",
             "key": "APS",
             "lang": "en",
             "name": "Ap Southeast",
             "sub_keys": "Delos"
           },
-          "LA/APS/Delos": {
-            "id": "data/LA/APS/Delos",
+          "NW/APS/Delos": {
+            "id": "data/NW/APS/Delos",
             "key": "Delos",
             "sub_isoids": "DLS",
             "lang": "en"
-          },
-
+          }
 }
 
 

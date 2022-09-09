@@ -3,20 +3,22 @@ from MMOGameValidator import InvalidCharacter, normalize_character , format_char
 
 
 
-# a = get_validation_rules({'game_code': 'WCW', 'game_region': 'US'})
+a = get_validation_rules({'game_code': 'WCW', 'game_region': "US"})
 
 
-# print(a)
-addr = {
-    'game_code': 'WCW',
-    'game_region': 'US',
-    'region_servers': 'Ashkandi',
-    'character_name': 'qasemhakà'}
-try:
-    character = normalize_character(addr)
+print(a)
+# addr = {
+#     'game_code': 'WCW',
+#     'game_region': 'US',
+#     'region_servers': 'Ashkandi',
+#     'character_name': 'qasemhakà',
+#     'street_character': "new orlando",
+#      'game_faction': "Horde"}
+# try:
+#     character = normalize_character(addr)
     
-    print(character)
-    # print(format_character(character,latin=True ))
+#     # print(character)
+#     print(format_character(character,latin=True ))
     
-except InvalidCharacter as e:
-    print(e.errors)
+# except InvalidCharacter as e:
+#     print(e.errors)

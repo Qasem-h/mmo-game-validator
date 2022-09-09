@@ -11,7 +11,7 @@ VALIDATION_DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 VALIDATION_DATA_PATH = os.path.join(VALIDATION_DATA_DIR, "%s.json")
 
 FIELD_MAPPING = { 
-    "A": "street_character", #faction
+    "A": "game_faction", #faction
     "C": "region_servers",
     "N": "name",
     "S": "game_region",
@@ -50,6 +50,8 @@ class ValidationRules(object):
         "allowed_fields",
         "required_fields",
         "upper_fields",
+        "game_faction_type",
+        "game_faction_choices",
         "game_region_type",
         "game_region_choices",
         "region_servers_type",
@@ -69,6 +71,8 @@ class ValidationRules(object):
         allowed_fields,
         required_fields,
         upper_fields,
+        game_faction_type,
+        game_faction_choices,
         game_region_type,
         game_region_choices,
         region_servers_type,
@@ -85,6 +89,8 @@ class ValidationRules(object):
         self.allowed_fields = allowed_fields
         self.required_fields = required_fields
         self.upper_fields = upper_fields
+        self.game_faction_type = game_faction_type
+        self.game_faction_choices = game_faction_choices
         self.game_region_type = game_region_type
         self.game_region_choices = game_region_choices
         self.region_servers_type = region_servers_type
@@ -104,6 +110,8 @@ class ValidationRules(object):
             "allowed_fields=%r, "
             "required_fields=%r, "
             "upper_fields=%r, "
+            "game_faction_type=%r, "
+            "game_faction_choices=%r, "
             "game_region_type=%r, "
             "game_region_choices=%r, "
             "region_servers_type=%r, "
@@ -120,6 +128,8 @@ class ValidationRules(object):
                 self.allowed_fields,
                 self.required_fields,
                 self.upper_fields,
+                self.game_faction_type,
+                self.game_faction_choices,
                 self.game_region_type,
                 self.game_region_choices,
                 self.region_servers_type,
@@ -161,6 +171,38 @@ def _make_choices(rules, translated=False):
                 if value
             ]
     return choices
+
+def _make_none_choices(rules, translated=False):
+    sub_keys = rules.get("faction_keys")
+    if not sub_keys:
+        return []
+    choices = []
+    sub_keys = sub_keys.split("~")
+    sub_names = rules.get("faction_names")
+    if sub_names:
+        choices += [
+            (key, value) for key, value in zip(sub_keys, sub_names.split("~")) if value
+        ]
+    else:
+        if not translated:
+            choices += [(key, key) for key in sub_keys]
+    if not translated:
+        sub_lnames = rules.get("sub_lnames")
+        if sub_lnames:
+            choices += [
+                (key, value)
+                for key, value in zip(sub_keys, sub_lnames.split("~"))
+                if value
+            ]
+        sub_lfnames = rules.get("sub_lfnames")
+        if sub_lfnames:
+            choices += [
+                (key, value)
+                for key, value in zip(sub_keys, sub_lfnames.split("~"))
+                if value
+            ]
+    return choices
+
 
 
 def _compact_choices(choices):
@@ -215,7 +257,9 @@ def get_validation_rules(character):
     if "character_name" in allowed_fields:
         if "zip" in game_data:
             character_name_matchers.append(re.compile("^" + game_data["zip"] + "$"))
-
+            
+    game_faction_type = game_data.get("game_faction_type", "")
+    game_faction_choices = []
     game_region_choices = []
     region_servers_choices = []
     game_region_type = game_data["region_name_type"]
@@ -224,9 +268,30 @@ def get_validation_rules(character):
     character_name_prefix = game_data.get("postprefix", "")
     # second level of data is for administrative areas
     game_region = None
+    game_faction = None
     region_servers = None
     region_servers_area = None
+    
     if game_code in database:
+        if "faction_keys" in game_data:
+            for language in languages:
+                is_default_language = (
+                    language is None or language == game_data["lang"]
+                )
+                # matched_game_faction = None
+                if is_default_language:
+                    localized_game_data = database[game_code]
+                else:
+                    localized_game_data = database[
+                        "%s--%s" % (game_code, language)
+                    ]
+                localized_game_faction_choices = _make_none_choices(localized_game_data)
+                game_faction_choices += localized_game_faction_choices
+                existing_choice = game_faction is not None
+                matched_game_faction = game_faction = _match_choices(
+                    character.get("game_faction"), localized_game_faction_choices
+                )
+        
         if "sub_keys" in game_data:
             for language in languages:
                 is_default_language = (
@@ -246,6 +311,7 @@ def get_validation_rules(character):
                 matched_game_region = game_region = _match_choices(
                     character.get("game_region"), localized_game_region_choices
                 )
+                
                 if matched_game_region:
                     # third level of data is for cities
                     if is_default_language:
@@ -316,6 +382,7 @@ def get_validation_rules(character):
                                         )
         game_region_choices = _compact_choices(game_region_choices)
         region_servers_choices = _compact_choices(region_servers_choices)
+        game_faction_choices = _compact_choices(game_faction_choices)
 
     return ValidationRules(
         game_code,
@@ -326,6 +393,8 @@ def get_validation_rules(character):
         allowed_fields,
         required_fields,
         upper_fields,
+        game_faction_type,
+        game_faction_choices,
         game_region_type,
         game_region_choices,
         region_servers_type,
@@ -377,6 +446,9 @@ def normalize_character(character):
             cleaned_data["game_code"] = game_code.upper()
         _normalize_field(
             "game_region", rules, cleaned_data, rules.game_region_choices, errors
+        )
+        _normalize_field(
+            "game_faction", rules, cleaned_data, rules.game_faction_choices, errors
         )
         _normalize_field("region_servers", rules, cleaned_data, rules.region_servers_choices, errors)
         # _normalize_field(

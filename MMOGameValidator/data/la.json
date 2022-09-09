@@ -15,7 +15,7 @@
       "sub_mores": "true~true~true",
       "sub_names": "North America West~ North America East~Europe Central~Europe West~South America",
       "upper": "CS",
-      "zip": "^[-'a-zÀ-ÿ]{2,12}$"
+      "zip": "[-'a-zÀ-ÿ]{2,12}$"
     },
 
     "LA/": {

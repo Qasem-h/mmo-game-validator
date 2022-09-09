@@ -1,21 +1,25 @@
 {
     "WCW": {
-      "fmt": "%O%n%N%n%A%n%D%n%C-%S%n%Z",
+  
+      "fmt": "%n%Z%n%A%n%n%C-%S",
       "id": "data/WCW",
       "key": "WCW",
       "lang": "en",
       "languages": "en",
-      "name": "WCWAZIL",
-      "game_full_name": "WCWAZIL",
-      "game_short_name": "WCWAZIL",
+      "name": "World of Warcraft Classic WOTLK",
+      "game_full_name": "World of Warcraft: Wrath of the Lich King Classic",
+      "game_short_name": "WoW Classic WOTLK",
       "require": "ASCZ",
       "region_name_type": "rgion",
       "sub_isoids": "US~EU~OC",
       "sub_keys": "US~EU~OC",
       "sub_mores": "true~true~true",
       "sub_names": "Americas~Europe~Oceania",
+      "game_faction_type": "faction",
+      "faction_keys": "Alliance~Horde",
+      "faction_names": "Alliance~Horde",
       "upper": "CS",
-      "zip": "^[-'a-zÀ-ÿ]{2,12}$"
+      "zip": "[-'a-zÀ-ÿ]{2,12}$"
     },
   
     "WCW/US": {
