@@ -1,0 +1,323 @@
+{
+    "WCW": {
+      "fmt": "%O%n%N%n%A%n%D%n%C-%S%n%Z",
+      "id": "data/WCW",
+      "key": "WCW",
+      "lang": "en",
+      "languages": "en",
+      "name": "WCWAZIL",
+      "game_full_name": "WCWAZIL",
+      "game_short_name": "WCWAZIL",
+      "require": "ASCZ",
+      "region_name_type": "rgion",
+      "sub_isoids": "US~EU~OC",
+      "sub_keys": "US~EU~OC",
+      "sub_mores": "true~true~true",
+      "sub_names": "Americas~Europe~Oceania",
+      "upper": "CS",
+      "zip": "^[-'a-zÀ-ÿ]{2,12}$"
+    },
+  
+    "WCW/US": {
+      "id": "data/WCW/US",
+      "isoid": "US",
+      "key": "US",
+      "lang": "en",
+      "name": "Americas",
+      "sub_keys": "Maladath~Skyfury~Ashkandi~Atiesh~Azuresong~Benediction~Bloodsail Buccaneers~Earthfury~Faerlina~Grobbulus~Mankrik~Myzrael~Old Blanchy~Pagle~Sulfuras~Westfall~Whitemane~Windseeker"
+    },
+    "WCW/US/Maladath": {
+      "id": "data/WCW/US/Maladath",
+      "key": "Maladath",
+      "sub_isoids": "MLH",
+      "lang": "en"
+    },
+    "WCW/US/Skyfury": {
+        "id": "data/WCW/US/Skyfury",
+        "key": "Skyfury",
+        "sub_isoids": "SKY",
+        "lang": "en"
+      },
+
+    "WCW/US/Ashkandi": {
+        "id": "data/WCW/US/Ashkandi",
+        "key": "Ashkandi",
+        "sub_isoids": "AHI",
+        "lang": "en"
+      },
+    "WCW/US/Atiesh": {
+        "id": "data/WCW/US/Atiesh",
+        "key": "Atiesh",
+        "sub_isoids": "ATH",
+        "lang": "en"
+      },
+    "WCW/US/Azuresong": {
+        "id": "data/WCW/US/Azuresong",
+        "key": "Azuresong",
+        "sub_isoids": "AZG",
+        "lang": "en"
+      },
+    "WCW/US/Benediction": {
+        "id": "data/WCW/US/Benediction",
+        "key": "Benediction",
+        "sub_isoids": "BEN",
+        "lang": "en"
+      },
+    "WCW/US/Bloodsail Buccaneers": {
+        "id": "data/WCW/US/Bloodsail Buccaneers",
+        "key": "Bloodsail Buccaneers",
+        "sub_isoids": "BBL",
+        "lang": "en"
+      },
+    "WCW/US/Earthfury": {
+        "id": "data/WCW/US/Earthfury",
+        "key": "Earthfury",
+        "sub_isoids": "EFY",
+        "lang": "en"
+      },
+    "WCW/US/Faerlina": {
+        "id": "data/WCW/US/Faerlina",
+        "key": "Faerlina",
+        "sub_isoids": "FAA",
+        "lang": "en"
+      },
+    "WCW/US/Grobbulus": {
+        "id": "data/WCW/US/Grobbulus",
+        "key": "Grobbulus",
+        "sub_isoids": "GRS",
+        "lang": "en"
+      },
+    "WCW/US/Mankrik": {
+        "id": "data/WCW/US/Mankrik",
+        "key": "Mankrik",
+        "sub_isoids": "MNK",
+        "lang": "en"
+      },
+    "WCW/US/Myzrael": {
+        "id": "data/WCW/US/Myzrael",
+        "key": "Myzrael",
+        "sub_isoids": "MYL",
+        "lang": "en"
+      },
+    "WCW/US/Old Blanchy": {
+        "id": "data/WCW/US/Old Blanchy",
+        "key": "Old Blanchy",
+        "sub_isoids": "OBY",
+        "lang": "en"
+      },
+    "WCW/US/Pagle": {
+        "id": "data/WCW/US/Pagle",
+        "key": "Pagle",
+        "sub_isoids": "PGE",
+        "lang": "en"
+      },
+    "WCW/US/Sulfuras": {
+        "id": "data/WCW/US/Sulfuras",
+        "key": "Sulfuras",
+        "sub_isoids": "SLS",
+        "lang": "en"
+      },
+    "WCW/US/Westfall": {
+        "id": "data/WCW/US/Westfall",
+        "key": "Westfall",
+        "sub_isoids": "WEL",
+        "lang": "en"
+      },
+
+    "WCW/US/Whitemane": {
+        "id": "data/WCW/US/Whitemane",
+        "key": "Whitemane",
+        "sub_isoids": "WHE",
+        "lang": "en"
+      },
+      
+    "WCW/US/Windseeker": {
+        "id": "data/WCW/US/Windseeker",
+        "key": "Windseeker",
+        "sub_isoids": "WIR",
+        "lang": "en"
+      },
+
+    "WCW/EU": {
+          "id": "data/WCW/EU",
+          "isoid": "EU",
+          "key": "EU",
+          "lang": "en",
+          "name": "Europe",
+          "sub_keys": "Giantstalker~Thekal~Amnennar~Ashbringer~Auberdine~Earthshaker~Everlook~Gehennas~Venoxis~Firemaw~Golemagg~Hydraxian Waterlords~Lakeshire~Mandokir~Mirage Raceway~Mograine~Nethergarde Keep~Patchwerk~Pyrewood Village~Razorfen~Sulfuron~Transcendence~",
+          "zip": "699",
+          "zipex": "69900-000,69999-999"
+        },
+    "WCW/EU/Giantstalker": {
+          "id": "data/WCW/EU/Giantstalker",
+          "key": "Giantstalker",
+          "sub_isoids": "GIA",
+          "lang": "en"
+        },
+    "WCW/EU/Thekal": {
+            "id": "data/WCW/EU/Thekal",
+            "key": "Thekal",
+            "sub_isoids": "TKH",
+            "lang": "en"
+          },
+    
+    "WCW/EU/Amnennar": {
+            "id": "data/WCW/EU/Amnennar",
+            "key": "Amnennar",
+            "sub_isoids": "AMR",
+            "lang": "en"
+          },
+    "WCW/EU/Ashbringer": {
+            "id": "data/WCW/EU/Ashbringer",
+            "key": "Ashbringer",
+            "sub_isoids": "ASR",
+            "lang": "en"
+          },
+    "WCW/EU/Auberdine": {
+            "id": "data/WCW/EU/Auberdine",
+            "key": "Auberdine",
+            "sub_isoids": "AUE",
+            "lang": "en"
+          },
+    "WCW/EU/Earthshaker": {
+            "id": "data/WCW/EU/Earthshaker",
+            "key": "Earthshaker",
+            "sub_isoids": "ERR",
+            "lang": "en"
+          },
+    "WCW/EU/Everlook": {
+            "id": "data/WCW/EU/Everlook",
+            "key": "Everlook",
+            "sub_isoids": "EVK",
+            "lang": "en"
+          },
+    "WCW/EU/Gehennas": {
+            "id": "data/WCW/EU/Gehennas",
+            "key": "Gehennas",
+            "sub_isoids": "GNS",
+            "lang": "en"
+          },
+    "WCW/EU/Venoxis": {
+            "id": "data/WCW/EU/Venoxis",
+            "key": "Venoxis",
+            "sub_isoids": "VXS",
+            "lang": "en"
+          },
+        "WCW/EU/Firemaw": {
+            "id": "data/WCW/EU/Firemaw",
+            "key": "Firemaw",
+            "sub_isoids": "FIW",
+            "lang": "en"
+          },
+        "WCW/EU/Golemagg": {
+            "id": "data/WCW/EU/Golemagg",
+            "key": "Golemagg",
+            "sub_isoids": "GOG",
+            "lang": "en"
+          },
+        "WCW/EU/Hydraxian Waterlords": {
+            "id": "data/WCW/EU/Hydraxian Waterlords",
+            "key": "Hydraxian Waterlords",
+            "sub_isoids": "HYN",
+            "lang": "en"
+          },
+        "WCW/EU/Lakeshire": {
+            "id": "data/WCW/EU/Lakeshire",
+            "key": "Lakeshire",
+            "sub_isoids": "LAE",
+            "lang": "en"
+          },
+        "WCW/EU/Mandokir": {
+            "id": "data/WCW/EU/Mandokir",
+            "key": "Mandokir",
+            "sub_isoids": "MAR",
+            "lang": "en"
+          },
+        "WCW/EU/Mirage Raceway": {
+            "id": "data/WCW/EU/Mirage Raceway",
+            "key": "Mirage Raceway",
+            "sub_isoids": "MIY",
+            "lang": "en"
+          },
+        "WCW/EU/Mograine": {
+            "id": "data/WCW/EU/Mograine",
+            "key": "Mograine",
+            "sub_isoids": "MOE",
+            "lang": "en"
+          },
+    
+        "WCW/EU/Nethergarde Keep": {
+            "id": "data/WCW/EU/Nethergarde Keep",
+            "key": "Nethergarde Keep",
+            "sub_isoids": "NEE",
+            "lang": "en"
+          },
+    
+        "WCW/EU/Patchwerk": {
+            "id": "data/WCW/EU/Patchwerk",
+            "key": "Patchwerk",
+            "sub_isoids": "PAK",
+            "lang": "en"
+          },
+    
+        "WCW/EU/Pyrewood Village": {
+            "id": "data/WCW/EU/Pyrewood Village",
+            "key": "Pyrewood Village",
+            "sub_isoids": "PYD",
+            "lang": "en"
+          },
+    
+        "WCW/EU/Razorfen": {
+            "id": "data/WCW/EU/Razorfen",
+            "key": "Razorfen",
+            "sub_isoids": "RAR",
+            "lang": "en"
+          },
+    
+        "WCW/EU/Sulfuron": {
+            "id": "data/WCW/EU/Sulfuron",
+            "key": "Sulfuron",
+            "sub_isoids": "SUN",
+            "lang": "en"
+          },
+          
+        "WCW/EU/Transcendence": {
+            "id": "data/WCW/EU/Transcendence",
+            "key": "Transcendence",
+            "sub_isoids": "TRE",
+            "lang": "en"
+          },
+
+        "WCW/OC": {
+            "id": "data/WCW/OC",
+            "isoid": "OC",
+            "key": "OC",
+            "lang": "en",
+            "name": "Oceania",
+            "sub_keys": "Arugal~Remulos~Yojamba",
+            "zip": "699",
+            "zipex": "69900-000,69999-999"
+        }, 
+        "WCW/OC/Arugal": {
+            "id": "data/WCW/OC/Arugal",
+            "key": "Arugal",
+            "sub_isoids": "ARL",
+            "lang": "en"
+          },
+          "WCW/OC/Remulos": {
+            "id": "data/WCW/OC/Remulos",
+            "key": "Remulos",
+            "sub_isoids": "RES",
+            "lang": "en"
+          },
+          "WCW/OC/Yojamba": {
+            "id": "data/WCW/OC/Yojamba",
+            "key": "Yojamba",
+            "sub_isoids": "YOA",
+            "lang": "en"
+          }
+
+
+}
+    
+    

@@ -1,2 +1,2 @@
 include LICENSE README.rst
-include i18naddress/data/*
+include MMOGameValidator/data/*

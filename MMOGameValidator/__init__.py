@@ -10,8 +10,8 @@ VALID_GAME_CODE = re.compile(r"^\w{2,3}$")
 VALIDATION_DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 VALIDATION_DATA_PATH = os.path.join(VALIDATION_DATA_DIR, "%s.json")
 
-FIELD_MAPPING = {
-    "A": "street_address",
+FIELD_MAPPING = { 
+    "A": "street_character", #faction
     "C": "region_servers",
     "N": "name",
     "S": "game_region",
@@ -46,7 +46,7 @@ class ValidationRules(object):
         "game_name",
         "game_short_name",
         "game_full_name",
-        "address_format",
+        "character_format",
         "allowed_fields",
         "required_fields",
         "upper_fields",
@@ -65,7 +65,7 @@ class ValidationRules(object):
         game_name,
         game_short_name,
         game_full_name,
-        address_format,
+        character_format,
         allowed_fields,
         required_fields,
         upper_fields,
@@ -81,7 +81,7 @@ class ValidationRules(object):
         self.game_name = game_name
         self.game_short_name = game_short_name
         self.game_full_name = game_full_name
-        self.address_format = address_format
+        self.character_format = character_format
         self.allowed_fields = allowed_fields
         self.required_fields = required_fields
         self.upper_fields = upper_fields
@@ -100,7 +100,7 @@ class ValidationRules(object):
             "game_name=%r, "
             "game_short_name=%r, "
             "game_full_name=%r, "
-            "address_format=%r, "
+            "character_format=%r, "
             "allowed_fields=%r, "
             "required_fields=%r, "
             "upper_fields=%r, "
@@ -116,7 +116,7 @@ class ValidationRules(object):
                 self.game_name,
                 self.game_short_name,
                 self.game_full_name,
-                self.address_format,
+                self.character_format,
                 self.allowed_fields,
                 self.required_fields,
                 self.upper_fields,
@@ -196,14 +196,14 @@ def _load_game_data(game_code):
     return game_data, database
 
 
-def get_validation_rules(address):
-    game_code = address.get("game_code", "").upper()
+def get_validation_rules(character):
+    game_code = character.get("game_code", "").upper()
     game_data, database = _load_game_data(game_code)
     game_name = game_data.get("name", "")
     game_short_name = game_data.get("short_name", "")
     game_full_name = game_data.get("full_name", "")
-    address_format = game_data["fmt"]
-    format_fields = re.finditer(r"%([ACNSXZ])", address_format)
+    character_format = game_data["fmt"]
+    format_fields = re.finditer(r"%([ACNSXZ])", character_format)
     allowed_fields = {FIELD_MAPPING[m.group(1)] for m in format_fields}
     required_fields = {FIELD_MAPPING[f] for f in game_data["require"]}
     upper_fields = {FIELD_MAPPING[f] for f in game_data["upper"]}
@@ -218,7 +218,6 @@ def get_validation_rules(address):
 
     game_region_choices = []
     region_servers_choices = []
-    server_area_choices = []
     game_region_type = game_data["region_name_type"]
     region_servers_type = game_data["locality_name_type"]
     character_name_type = game_data["zip_name_type"]
@@ -245,7 +244,7 @@ def get_validation_rules(address):
                 game_region_choices += localized_game_region_choices
                 existing_choice = game_region is not None
                 matched_game_region = game_region = _match_choices(
-                    address.get("game_region"), localized_game_region_choices
+                    character.get("game_region"), localized_game_region_choices
                 )
                 if matched_game_region:
                     # third level of data is for cities
@@ -268,7 +267,7 @@ def get_validation_rules(address):
                         region_servers_choices += localized_region_servers_choices
                         existing_choice = region_servers is not None
                         matched_server = region_servers = _match_choices(
-                            address.get("region_servers"), localized_region_servers_choices
+                            character.get("region_servers"), localized_region_servers_choices
                         )
                     if matched_server:
                         # fourth level of data is for dependent sublocalities
@@ -291,7 +290,7 @@ def get_validation_rules(address):
                             server_area_choices += localized_server_area_choices
                             existing_choice = region_servers_area is not None
                             matched_server_area = region_servers_area = _match_choices(
-                                address.get("region_servers_area"), localized_server_area_choices
+                                character.get("region_servers_area"), localized_server_area_choices
                             )
                             if matched_server_area:
                                 if is_default_language:
@@ -317,14 +316,13 @@ def get_validation_rules(address):
                                         )
         game_region_choices = _compact_choices(game_region_choices)
         region_servers_choices = _compact_choices(region_servers_choices)
-        server_area_choices = _compact_choices(server_area_choices)
 
     return ValidationRules(
         game_code,
         game_name,
         game_short_name,
         game_full_name ,
-        address_format,
+        character_format,
         allowed_fields,
         required_fields,
         upper_fields,
@@ -338,9 +336,9 @@ def get_validation_rules(address):
     )
 
 
-class InvalidAddress(ValueError):
+class InvalidCharacter(ValueError):
     def __init__(self, message, errors):
-        super(InvalidAddress, self).__init__(message)
+        super(InvalidCharacter, self).__init__(message)
         self.errors = errors
 
 
@@ -364,14 +362,14 @@ def _normalize_field(name, rules, data, choices, errors):
         data[name] = ""
 
 
-def normalize_address(address):
+def normalize_character(character):
     errors = {}
     try:
-        rules = get_validation_rules(address)
+        rules = get_validation_rules(character)
     except ValueError:
         errors["game_code"] = "invalid"
     else:
-        cleaned_data = address.copy()
+        cleaned_data = character.copy()
         game_code = cleaned_data.get("game_code")
         if not game_code:
             errors["game_code"] = "required"
@@ -381,9 +379,9 @@ def normalize_address(address):
             "game_region", rules, cleaned_data, rules.game_region_choices, errors
         )
         _normalize_field("region_servers", rules, cleaned_data, rules.region_servers_choices, errors)
-        _normalize_field(
-            "region_servers_area", rules, cleaned_data, rules.server_area_choices, errors
-        )
+        # _normalize_field(
+        #     "region_servers_area", rules, cleaned_data, rules.server_area_choices, errors
+        # )
         _normalize_field("character_name", rules, cleaned_data, [], errors)
         character_name = cleaned_data.get("character_name", "")
         if rules.character_name_matchers and character_name:
@@ -391,16 +389,16 @@ def normalize_address(address):
                 if not matcher.match(character_name):
                     errors["character_name"] = "invalid"
                     break
-        _normalize_field("street_address", rules, cleaned_data, [], errors)
+        _normalize_field("street_character", rules, cleaned_data, [], errors)
         _normalize_field("sorting_code", rules, cleaned_data, [], errors)
     if errors:
-        raise InvalidAddress("Invalid address", errors)
+        raise InvalidCharacter("Invalid character", errors)
     return cleaned_data
 
 
-def _format_address_line(line_format, address, rules):
+def _format_character_line(line_format, character, rules):
     def _get_field(name):
-        value = address.get(name, "")
+        value = character.get(name, "")
         if name in rules.upper_fields:
             value = value.upper()
         return value
@@ -415,21 +413,16 @@ def _format_address_line(line_format, address, rules):
     return "".join(fields).strip()
 
 
-def get_field_order(address, latin=False):
-    """
-    Returns expected order of address form fields as a list of lists.
-    Example for PL:
-    >>> get_field_order({'game_code': 'PL'})
-    [[u'name'], [u'company_name'], [u'street_address'], [u'character_name', u'region_servers']]
-    """
-    rules = get_validation_rules(address)
-    address_format = rules.address_format
-    address_lines = address_format.split("%n")
+def get_field_order(character, latin=False):
+
+    rules = get_validation_rules(character)
+    character_format = rules.character_format
+    character_lines = character_format.split("%n")
     replacements = {
         "%%%s" % code: field_name for code, field_name in FIELD_MAPPING.items()
     }
     all_lines = []
-    for line in address_lines:
+    for line in character_lines:
         fields = re.split("(%.)", line)
         single_line = [replacements.get(field) for field in fields]
         single_line = list(filter(None, single_line))
@@ -437,26 +430,26 @@ def get_field_order(address, latin=False):
     return all_lines
 
 
-def format_address(address, latin=False):
-    rules = get_validation_rules(address)
-    address_format = rules.address_format
-    address_line_formats = address_format.split("%n")
-    address_lines = [
-        _format_address_line(lf, address, rules) for lf in address_line_formats
+def format_character(character, latin=False):
+    rules = get_validation_rules(character)
+    character_format = rules.character_format
+    character_line_formats = character_format.split("%n")
+    character_lines = [
+        _format_character_line(lf, character, rules) for lf in character_line_formats
     ]
-    address_lines.append(rules.game_name)
-    address_lines = filter(None, address_lines)
-    return "\n".join(address_lines)
+    character_lines.append(rules.game_name)
+    character_lines = filter(None, character_lines)
+    return "\n".join(character_lines)
 
 
-def latinize_address(address, normalized=False):
+def latinize_character(character, normalized=False):
     if not normalized:
-        address = normalize_address(address)
-    cleaned_data = address.copy()
-    game_code = address.get("game_code", "").upper()
+        character = normalize_character(character)
+    cleaned_data = character.copy()
+    game_code = character.get("game_code", "").upper()
     dummy_game_data, database = _load_game_data(game_code)
     if game_code:
-        game_region = address["game_region"]
+        game_region = character["game_region"]
         if game_region:
             key = "%s/%s" % (game_code, game_region)
             game_region_data = database.get(key)
@@ -464,14 +457,14 @@ def latinize_address(address, normalized=False):
                 cleaned_data["game_region"] = game_region_data.get(
                     "lname", game_region_data.get("name", game_region)
                 )
-                region_servers = address["region_servers"]
+                region_servers = character["region_servers"]
                 key = "%s/%s/%s" % (game_code, game_region, region_servers)
                 server_data = database.get(key)
                 if server_data:
                     cleaned_data["region_servers"] = server_data.get(
                         "lname", server_data.get("name", region_servers)
                     )
-                    region_servers_area = address["region_servers_area"]
+                    region_servers_area = character["region_servers_area"]
                     key = "%s/%s/%s/%s" % (game_code, game_region, region_servers, region_servers_area)
                     server_area_data = database.get(key)
                     if server_area_data:

@@ -1,0 +1,78 @@
+{
+    "LA": {
+      "fmt": "%O%n%N%n%A%n%D%n%C-%S%n%Z",
+      "id": "data/LA",
+      "key": "LA",
+      "lang": "en",
+      "languages": "en",
+      "name": "Lost Ark",
+      "game_full_name": "Amazon Lost Ark",
+      "game_short_name": "Lost Ark",
+      "require": "ASCZ",
+      "region_name_type": "rgion",
+      "sub_isoids": "NAW~NAE~EUC~EUW~SA",
+      "sub_keys": "NAW~NAE~EUC~EUW~",
+      "sub_mores": "true~true~true",
+      "sub_names": "North America West~ North America East~Europe Central~Europe West~South America",
+      "upper": "CS",
+      "zip": "^[-'a-zÀ-ÿ]{2,12}$"
+    },
+
+    "LA/": {
+          "id": "data/LA/NAW",
+          "isoid": "NAW",
+          "key": "NAW",
+          "lang": "en",
+          "name": "Americas",
+          "sub_keys": "Mari~Akkan~Rohendel~Valtan~Bergstrom~Enviska~Shandi~"
+        },
+        "LA/NAW/Mari": {
+          "id": "data/LA/NAW/Mari",
+          "key": "Mari",
+          "sub_isoids": "MRI",
+          "lang": "en"
+        },
+        "LA/NAW/Akkan": {
+          "id": "data/LA/NAW/Akkan",
+          "key": "Akkan",
+          "sub_isoids": "AKN",
+          "lang": "en"
+        },
+    
+        "LA/NAW/Rohendel": {
+          "id": "data/LA/NAW/Rohendel",
+          "key": "Rohendel",
+          "sub_isoids": "RDL",
+          "lang": "en"
+        },
+    
+        "LA/NAW/Valtan": {
+          "id": "data/LA/NAW/Valtan",
+          "key": "Valtan",
+          "sub_isoids": "VLN",
+          "lang": "en"
+        },
+    
+        "LA/NAW/Bergstrom": {
+          "id": "data/LA/NAW/Bergstrom",
+          "key": "Bergstrom",
+          "sub_isoids": "BRM",
+          "lang": "en"
+        },
+    
+        "LA/NAW/Enviska": {
+          "id": "data/LA/NAW/Enviska",
+          "key": "Enviska",
+          "sub_isoids": "ENA",
+          "lang": "en"
+        },
+    
+        "LA/NAW/Shandi": {
+          "id": "data/LA/NAW/Shandi",
+          "key": "Shandi",
+          "sub_isoids": "SHI",
+          "lang": "en"
+        }
+}
+    
+    

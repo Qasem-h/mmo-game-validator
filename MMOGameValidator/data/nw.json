@@ -1,0 +1,150 @@
+{
+    "LA": {
+      "fmt": "%O%n%N%n%A%n%D%n%C-%S%n%Z",
+      "id": "data/LA",
+      "key": "LA",
+      "lang": "en",
+      "languages": "en",
+      "name": "Lost Ark",
+      "game_full_name": "Amazon Lost Ark",
+      "game_short_name": "Lost Ark",
+      "require": "ASCZ",
+      "region_name_type": "rgion",
+      "sub_isoids": "USW~USE~SAE~EUC~APS",
+      "sub_keys": "USW~USE~SAE~EUC~APS",
+      "sub_mores": "true~true~true~true~true",
+      "sub_names": "US West~US East~Sa East~Europe Central~Ap Southeast",
+      "upper": "CS",
+      "zip": "^[-'a-zÀ-ÿ]{2,12}$"
+    },
+    "LA/USW": {
+          "id": "data/LA/USW",
+          "isoid": "USW",
+          "key": "USW",
+          "lang": "en",
+          "name": "US West",
+          "sub_keys": "El Dorado~Yggdrasil"
+        },
+        "LA/USW/El Dorado": {
+          "id": "data/LA/USW/El Dorado",
+          "key": "El Dorado",
+          "sub_isoids": "EDO",
+          "lang": "en"
+        },
+        "LA/USW/Yggdrasil": {
+          "id": "data/LA/USW/Yggdrasil",
+          "key": "Yggdrasil",
+          "sub_isoids": "YGL",
+          "lang": "en"
+        },
+    "LA/USE": {
+          "id": "data/LA/USE",
+          "isoid": "USE",
+          "key": "USE",
+          "lang": "en",
+          "name": "US East",
+          "sub_keys": "Castle of Steel~Maramma~Orofena~Valhalla"
+        },
+        "LA/USE/Castle of Steel": {
+            "id": "data/LA/USE/Castle of Steel",
+            "key": "Castle of Steel",
+            "sub_isoids": "CSL",
+            "lang": "en"
+          },
+          "LA/USE/Maramma": {
+            "id": "data/LA/USE/Maramma",
+            "key": "Maramma",
+            "sub_isoids": "MMA",
+            "lang": "en"
+          },
+          "LA/USE/Orofena": {
+            "id": "data/LA/USE/Orofena",
+            "key": "Orofena",
+            "sub_isoids": "ORA",
+            "lang": "en"
+          },
+          "LA/USE/Valhalla": {
+            "id": "data/LA/USE/Valhalla",
+            "key": "Valhalla",
+            "sub_isoids": "VAA",
+            "lang": "en"
+          },
+    "LA/SAE": {
+            "id": "data/LA/SAE",
+            "isoid": "SAE",
+            "key": "SAE",
+            "lang": "en",
+            "name": "Sa East",
+            "sub_keys": "Devaloka"
+          },
+          "LA/SAE/Devaloka": {
+            "id": "data/LA/SAE/Devaloka",
+            "key": "Devaloka",
+            "sub_isoids": "DVA",
+            "lang": "en"
+          },
+    "LA/EUC": {
+            "id": "data/LA/EUC",
+            "isoid": "EUC",
+            "key": "EUC",
+            "lang": "en",
+            "name": "Europe Central",
+            "sub_keys": "Aaru~Abaton~Barri~Dry Tree~Nysa~Tartarus"
+          },
+          "LA/EUC/Aaru": {
+            "id": "data/LA/EUC/Aaru",
+            "key": "Aaru",
+            "sub_isoids": "AAU",
+            "lang": "en"
+          },
+          "LA/EUC/Abaton": {
+            "id": "data/LA/EUC/Abaton",
+            "key": "Abaton",
+            "sub_isoids": "ABN",
+            "lang": "en"
+          },
+          "LA/EUC/Barri": {
+            "id": "data/LA/EUC/Barri",
+            "key": "Barri",
+            "sub_isoids": "BAI",
+            "lang": "en"
+          },
+          "LA/EUC/Dry Tree": {
+            "id": "data/LA/EUC/Dry Tree",
+            "key": "Dry Tree",
+            "sub_isoids": "DTE",
+            "lang": "en"
+          },
+          "LA/EUC/Nysa": {
+            "id": "data/LA/EUC/Nysa",
+            "key": "Nysa",
+            "sub_isoids": "NYA",
+            "lang": "en"
+          },
+          "LA/EUC/Tartarus": {
+            "id": "data/LA/EUC/Tartarus",
+            "key": "Tartarus",
+            "sub_isoids": "TAS",
+            "lang": "en"
+          },
+          "LA/APS": {
+            "id": "data/LA/APS",
+            "isoid": "APS",
+            "key": "APS",
+            "lang": "en",
+            "name": "Ap Southeast",
+            "sub_keys": "Delos"
+          },
+          "LA/APS/Delos": {
+            "id": "data/LA/APS/Delos",
+            "key": "Delos",
+            "sub_isoids": "DLS",
+            "lang": "en"
+          },
+
+}
+
+
+
+    
+    
