@@ -45,7 +45,6 @@ class ValidationRules(object):
         "game_code",
         "game_name",
         "game_short_name",
-        "game_full_name",
         "character_format",
         "allowed_fields",
         "required_fields",
@@ -66,7 +65,6 @@ class ValidationRules(object):
         game_code,
         game_name,
         game_short_name,
-        game_full_name,
         character_format,
         allowed_fields,
         required_fields,
@@ -84,7 +82,6 @@ class ValidationRules(object):
         self.game_code = game_code
         self.game_name = game_name
         self.game_short_name = game_short_name
-        self.game_full_name = game_full_name
         self.character_format = character_format
         self.allowed_fields = allowed_fields
         self.required_fields = required_fields
@@ -105,7 +102,6 @@ class ValidationRules(object):
             "game_code=%r, "
             "game_name=%r, "
             "game_short_name=%r, "
-            "game_full_name=%r, "
             "character_format=%r, "
             "allowed_fields=%r, "
             "required_fields=%r, "
@@ -123,7 +119,6 @@ class ValidationRules(object):
                 self.game_code,
                 self.game_name,
                 self.game_short_name,
-                self.game_full_name,
                 self.character_format,
                 self.allowed_fields,
                 self.required_fields,
@@ -243,7 +238,6 @@ def get_validation_rules(character):
     game_data, database = _load_game_data(game_code)
     game_name = game_data.get("name", "")
     game_short_name = game_data.get("short_name", "")
-    game_full_name = game_data.get("full_name", "")
     character_format = game_data["fmt"]
     format_fields = re.finditer(r"%([ACNSXZ])", character_format)
     allowed_fields = {FIELD_MAPPING[m.group(1)] for m in format_fields}
@@ -388,7 +382,6 @@ def get_validation_rules(character):
         game_code,
         game_name,
         game_short_name,
-        game_full_name ,
         character_format,
         allowed_fields,
         required_fields,
@@ -461,7 +454,6 @@ def normalize_character(character):
                 if not matcher.match(character_name):
                     errors["character_name"] = "invalid"
                     break
-        _normalize_field("street_character", rules, cleaned_data, [], errors)
         _normalize_field("sorting_code", rules, cleaned_data, [], errors)
     if errors:
         raise InvalidCharacter("Invalid character", errors)

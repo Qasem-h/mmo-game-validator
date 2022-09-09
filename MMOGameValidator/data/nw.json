@@ -1,21 +1,20 @@
 {
     "NW": {
-      "fmt": "%O%n%N%n%A%n%D%n%C-%S%n%Z",
+      "fmt": "%n%Z%n%n%C-%S",
       "id": "data/NW",
       "key": "NW",
       "lang": "en",
       "languages": "en",
-      "name": "Lost Ark",
-      "game_full_name": "Amazon Lost Ark",
-      "game_short_name": "Lost Ark",
-      "require": "ASCZ",
-      "region_name_type": "rgion",
+      "name": "New World",
+      "require": "SCZ",
+      "region_name_type": "region",
       "sub_isoids": "USW~USE~SAE~EUC~APS",
       "sub_keys": "USW~USE~SAE~EUC~APS",
       "sub_mores": "true~true~true~true~true",
       "sub_names": "US West~US East~Sa East~Europe Central~Ap Southeast",
       "upper": "CS",
-      "zip": "[-'a-zÀ-ÿ]{2,12}$"
+      "zip": "[-'a-zA-Z0-9_ À-ÿ]{2,16}$"
+      
     },
     "NW/USW": {
           "id": "data/NW/USW",

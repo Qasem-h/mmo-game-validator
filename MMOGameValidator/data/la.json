@@ -9,7 +9,7 @@
       "game_full_name": "Amazon Lost Ark",
       "game_short_name": "Lost Ark",
       "require": "ASCZ",
-      "region_name_type": "rgion",
+      "region_name_type": "region",
       "sub_isoids": "NAW~NAE~EUC~EUW~SA",
       "sub_keys": "NAW~NAE~EUC~EUW~",
       "sub_mores": "true~true~true",

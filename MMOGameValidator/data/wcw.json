@@ -1,16 +1,15 @@
 {
     "WCW": {
-  
+
       "fmt": "%n%Z%n%A%n%n%C-%S",
       "id": "data/WCW",
       "key": "WCW",
       "lang": "en",
       "languages": "en",
-      "name": "World of Warcraft Classic WOTLK",
-      "game_full_name": "World of Warcraft: Wrath of the Lich King Classic",
-      "game_short_name": "WoW Classic WOTLK",
+      "name": "World of Warcraft: Wrath of the Lich King Classic",
+      "short_name": "WoW Classic WOTLK",
       "require": "ASCZ",
-      "region_name_type": "rgion",
+      "region_name_type": "region",
       "sub_isoids": "US~EU~OC",
       "sub_keys": "US~EU~OC",
       "sub_mores": "true~true~true",
