@@ -11,10 +11,10 @@ VALIDATION_DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 VALIDATION_DATA_PATH = os.path.join(VALIDATION_DATA_DIR, "%s.json")
 
 FIELD_MAPPING = { 
-    "A": "game_faction", #faction
-    "C": "region_servers",
+    "A": "faction", #faction
+    "C": "server",
     "N": "name",
-    "S": "game_region",
+    "S": "region",
     "X": "sorting_code",
     "Z": "character_name",
 }
@@ -49,12 +49,12 @@ class ValidationRules(object):
         "allowed_fields",
         "required_fields",
         "upper_fields",
-        "game_faction_type",
-        "game_faction_choices",
-        "game_region_type",
-        "game_region_choices",
-        "region_servers_type",
-        "region_servers_choices",
+        "faction_type",
+        "faction_choices",
+        "region_type",
+        "region_choices",
+        "server_type",
+        "server_choices",
         "character_name_type",
         "character_name_matchers",
         "character_name_prefix",
@@ -69,12 +69,12 @@ class ValidationRules(object):
         allowed_fields,
         required_fields,
         upper_fields,
-        game_faction_type,
-        game_faction_choices,
-        game_region_type,
-        game_region_choices,
-        region_servers_type,
-        region_servers_choices,
+        faction_type,
+        faction_choices,
+        region_type,
+        region_choices,
+        server_type,
+        server_choices,
         character_name_type,
         character_name_matchers,
         character_name_prefix,
@@ -86,12 +86,12 @@ class ValidationRules(object):
         self.allowed_fields = allowed_fields
         self.required_fields = required_fields
         self.upper_fields = upper_fields
-        self.game_faction_type = game_faction_type
-        self.game_faction_choices = game_faction_choices
-        self.game_region_type = game_region_type
-        self.game_region_choices = game_region_choices
-        self.region_servers_type = region_servers_type
-        self.region_servers_choices = region_servers_choices
+        self.faction_type = faction_type
+        self.faction_choices = faction_choices
+        self.region_type = region_type
+        self.region_choices = region_choices
+        self.server_type = server_type
+        self.server_choices = server_choices
         self.character_name_type = character_name_type
         self.character_name_matchers = character_name_matchers
         self.character_name_prefix = character_name_prefix
@@ -106,12 +106,12 @@ class ValidationRules(object):
             "allowed_fields=%r, "
             "required_fields=%r, "
             "upper_fields=%r, "
-            "game_faction_type=%r, "
-            "game_faction_choices=%r, "
-            "game_region_type=%r, "
-            "game_region_choices=%r, "
-            "region_servers_type=%r, "
-            "region_servers_choices=%r, "
+            "faction_type=%r, "
+            "faction_choices=%r, "
+            "region_type=%r, "
+            "region_choices=%r, "
+            "server_type=%r, "
+            "server_choices=%r, "
             "character_name_type=%r, "
             "character_name_matchers=%r, "
             "character_name_prefix=%r)"
@@ -123,12 +123,12 @@ class ValidationRules(object):
                 self.allowed_fields,
                 self.required_fields,
                 self.upper_fields,
-                self.game_faction_type,
-                self.game_faction_choices,
-                self.game_region_type,
-                self.game_region_choices,
-                self.region_servers_type,
-                self.region_servers_choices,
+                self.faction_type,
+                self.faction_choices,
+                self.region_type,
+                self.region_choices,
+                self.server_type,
+                self.server_choices,
                 self.character_name_type,
                 self.character_name_matchers,
                 self.character_name_prefix,
@@ -249,22 +249,22 @@ def get_validation_rules(character):
 
     character_name_matchers = []
     if "character_name" in allowed_fields:
-        if "zip" in game_data:
-            character_name_matchers.append(re.compile("^" + game_data["zip"] + "$"))
+        if "regex" in game_data:
+            character_name_matchers.append(re.compile("^" + game_data["regex"] + "$"))
             
-    game_faction_type = game_data.get("game_faction_type", "")
-    game_faction_choices = []
-    game_region_choices = []
-    region_servers_choices = []
-    game_region_type = game_data["region_name_type"]
-    region_servers_type = game_data["locality_name_type"]
-    character_name_type = game_data["zip_name_type"]
-    character_name_prefix = game_data.get("postprefix", "")
+    faction_type = game_data.get("game_faction_type", "")
+    faction_choices = []
+    region_choices = []
+    server_choices = []
+    region_type = game_data["region_name_type"]
+    server_type = game_data["locality_name_type"]
+    character_name_type = game_data["regex_name_type"]
+    character_name_prefix = game_data.get("charprefix", "")
     # second level of data is for administrative areas
-    game_region = None
-    game_faction = None
-    region_servers = None
-    region_servers_area = None
+    region = None
+    faction = None
+    server = None
+    server_area = None
     
     if game_code in database:
         if "faction_keys" in game_data:
@@ -272,18 +272,18 @@ def get_validation_rules(character):
                 is_default_language = (
                     language is None or language == game_data["lang"]
                 )
-                # matched_game_faction = None
+                # matched_faction = None
                 if is_default_language:
                     localized_game_data = database[game_code]
                 else:
                     localized_game_data = database[
                         "%s--%s" % (game_code, language)
                     ]
-                localized_game_faction_choices = _make_none_choices(localized_game_data)
-                game_faction_choices += localized_game_faction_choices
-                existing_choice = game_faction is not None
-                matched_game_faction = game_faction = _match_choices(
-                    character.get("game_faction"), localized_game_faction_choices
+                localized_faction_choices = _make_none_choices(localized_game_data)
+                faction_choices += localized_faction_choices
+                existing_choice = faction is not None
+                matched_faction = faction = _match_choices(
+                    character.get("faction"), localized_faction_choices
                 )
         
         if "sub_keys" in game_data:
@@ -291,7 +291,7 @@ def get_validation_rules(character):
                 is_default_language = (
                     language is None or language == game_data["lang"]
                 )
-                matched_game_region = None
+                matched_region = None
                 matched_server = None
                 if is_default_language:
                     localized_game_data = database[game_code]
@@ -299,84 +299,84 @@ def get_validation_rules(character):
                     localized_game_data = database[
                         "%s--%s" % (game_code, language)
                     ]
-                localized_game_region_choices = _make_choices(localized_game_data)
-                game_region_choices += localized_game_region_choices
-                existing_choice = game_region is not None
-                matched_game_region = game_region = _match_choices(
-                    character.get("game_region"), localized_game_region_choices
+                localized_region_choices = _make_choices(localized_game_data)
+                region_choices += localized_region_choices
+                existing_choice = region is not None
+                matched_region = region = _match_choices(
+                    character.get("region"), localized_region_choices
                 )
                 
-                if matched_game_region:
+                if matched_region:
                     # third level of data is for cities
                     if is_default_language:
-                        game_region_data = database[
-                            "%s/%s" % (game_code, game_region)
+                        region_data = database[
+                            "%s/%s" % (game_code, region)
                         ]
                     else:
-                        game_region_data = database[
-                            "%s/%s--%s" % (game_code, game_region, language)
+                        region_data = database[
+                            "%s/%s--%s" % (game_code, region, language)
                         ]
                     if not existing_choice:
-                        if "zip" in game_region_data:
+                        if "regex" in region_data:
                             character_name_matchers.append(
-                                re.compile("^" + game_region_data["zip"])
+                                re.compile("^" + region_data["regex"])
                             )
 
-                    if "sub_keys" in game_region_data:
-                        localized_region_servers_choices = _make_choices(game_region_data)
-                        region_servers_choices += localized_region_servers_choices
-                        existing_choice = region_servers is not None
-                        matched_server = region_servers = _match_choices(
-                            character.get("region_servers"), localized_region_servers_choices
+                    if "sub_keys" in region_data:
+                        localized_server_choices = _make_choices(region_data)
+                        server_choices += localized_server_choices
+                        existing_choice = server is not None
+                        matched_server = server = _match_choices(
+                            character.get("server"), localized_server_choices
                         )
                     if matched_server:
                         # fourth level of data is for dependent sublocalities
                         if is_default_language:
                             server_data = database[
-                                "%s/%s/%s" % (game_code, game_region, region_servers)
+                                "%s/%s/%s" % (game_code, region, server)
                             ]
                         else:
                             server_data = database[
                                 "%s/%s/%s--%s"
-                                % (game_code, game_region, region_servers, language)
+                                % (game_code, region, server, language)
                             ]
                         if not existing_choice:
-                            if "zip" in server_data:
+                            if "regex" in server_data:
                                 character_name_matchers.append(
-                                    re.compile("^" + server_data["zip"])
+                                    re.compile("^" + server_data["regex"])
                                 )
                         if "sub_keys" in server_data:
                             localized_server_area_choices = _make_choices(server_data)
                             server_area_choices += localized_server_area_choices
-                            existing_choice = region_servers_area is not None
-                            matched_server_area = region_servers_area = _match_choices(
-                                character.get("region_servers_area"), localized_server_area_choices
+                            existing_choice = server_area is not None
+                            matched_server_area = server_area = _match_choices(
+                                character.get("server_area"), localized_server_area_choices
                             )
                             if matched_server_area:
                                 if is_default_language:
                                     server_area_data = database[
                                         "%s/%s/%s/%s"
-                                        % (game_code, game_region, region_servers, region_servers_area)
+                                        % (game_code, region, server, server_area)
                                     ]
                                 else:
                                     server_area_data = database[
                                         "%s/%s/%s/%s--%s"
                                         % (
                                             game_code,
-                                            game_region,
-                                            region_servers,
-                                            region_servers_area,
+                                            region,
+                                            server,
+                                            server_area,
                                             language,
                                         )
                                     ]
                                 if not existing_choice:
-                                    if "zip" in server_area_data:
+                                    if "regex" in server_area_data:
                                         character_name_matchers.append(
-                                            re.compile("^" + server_area_data["zip"])
+                                            re.compile("^" + server_area_data["regex"])
                                         )
-        game_region_choices = _compact_choices(game_region_choices)
-        region_servers_choices = _compact_choices(region_servers_choices)
-        game_faction_choices = _compact_choices(game_faction_choices)
+        region_choices = _compact_choices(region_choices)
+        server_choices = _compact_choices(server_choices)
+        faction_choices = _compact_choices(faction_choices)
 
     return ValidationRules(
         game_code,
@@ -386,12 +386,12 @@ def get_validation_rules(character):
         allowed_fields,
         required_fields,
         upper_fields,
-        game_faction_type,
-        game_faction_choices,
-        game_region_type,
-        game_region_choices,
-        region_servers_type,
-        region_servers_choices,
+        faction_type,
+        faction_choices,
+        region_type,
+        region_choices,
+        server_type,
+        server_choices,
         character_name_type,
         character_name_matchers,
         character_name_prefix,
@@ -438,14 +438,14 @@ def normalize_character(character):
         else:
             cleaned_data["game_code"] = game_code.upper()
         _normalize_field(
-            "game_region", rules, cleaned_data, rules.game_region_choices, errors
+            "region", rules, cleaned_data, rules.region_choices, errors
         )
         _normalize_field(
-            "game_faction", rules, cleaned_data, rules.game_faction_choices, errors
+            "faction", rules, cleaned_data, rules.faction_choices, errors
         )
-        _normalize_field("region_servers", rules, cleaned_data, rules.region_servers_choices, errors)
+        _normalize_field("server", rules, cleaned_data, rules.server_choices, errors)
         # _normalize_field(
-        #     "region_servers_area", rules, cleaned_data, rules.server_area_choices, errors
+        #     "server_area", rules, cleaned_data, rules.server_area_choices, errors
         # )
         _normalize_field("character_name", rules, cleaned_data, [], errors)
         character_name = cleaned_data.get("character_name", "")
@@ -513,26 +513,26 @@ def latinize_character(character, normalized=False):
     game_code = character.get("game_code", "").upper()
     dummy_game_data, database = _load_game_data(game_code)
     if game_code:
-        game_region = character["game_region"]
-        if game_region:
-            key = "%s/%s" % (game_code, game_region)
-            game_region_data = database.get(key)
-            if game_region_data:
-                cleaned_data["game_region"] = game_region_data.get(
-                    "lname", game_region_data.get("name", game_region)
+        region = character["region"]
+        if region:
+            key = "%s/%s" % (game_code, region)
+            region_data = database.get(key)
+            if region_data:
+                cleaned_data["region"] = region_data.get(
+                    "lname", region_data.get("name", region)
                 )
-                region_servers = character["region_servers"]
-                key = "%s/%s/%s" % (game_code, game_region, region_servers)
+                server = character["server"]
+                key = "%s/%s/%s" % (game_code, region, server)
                 server_data = database.get(key)
                 if server_data:
-                    cleaned_data["region_servers"] = server_data.get(
-                        "lname", server_data.get("name", region_servers)
+                    cleaned_data["server"] = server_data.get(
+                        "lname", server_data.get("name", server)
                     )
-                    region_servers_area = character["region_servers_area"]
-                    key = "%s/%s/%s/%s" % (game_code, game_region, region_servers, region_servers_area)
+                    server_area = character["server_area"]
+                    key = "%s/%s/%s/%s" % (game_code, region, server, server_area)
                     server_area_data = database.get(key)
                     if server_area_data:
-                        cleaned_data["region_servers_area"] = server_area_data.get(
-                            "lname", server_area_data.get("name", region_servers_area)
+                        cleaned_data["server_area"] = server_area_data.get(
+                            "lname", server_area_data.get("name", server_area)
                         )
     return cleaned_data

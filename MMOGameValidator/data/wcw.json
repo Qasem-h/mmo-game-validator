@@ -1,6 +1,5 @@
 {
     "WCW": {
-
       "fmt": "%n%Z%n%A%n%n%C-%S",
       "id": "data/WCW",
       "key": "WCW",
@@ -10,132 +9,132 @@
       "short_name": "WoW Classic WOTLK",
       "require": "ASCZ",
       "region_name_type": "region",
-      "sub_isoids": "US~EU~OC",
-      "sub_keys": "US~EU~OC",
+      "sub_isoids": "NA~EU~OC",
+      "sub_keys": "NA~EU~OC",
       "sub_mores": "true~true~true",
       "sub_names": "Americas~Europe~Oceania",
       "game_faction_type": "faction",
-      "faction_keys": "Alliance~Horde",
-      "faction_names": "Alliance~Horde",
+      "faction_keys": "alliance~horde",
+      "faction_names": "alliance~horde",
       "upper": "CS",
       "zip": "[-'a-zÀ-ÿ]{2,12}$"
     },
   
-    "WCW/US": {
-      "id": "data/WCW/US",
-      "isoid": "US",
-      "key": "US",
+    "WCW/NA": {
+      "id": "data/WCW/NA",
+      "isoid": "NA",
+      "key": "NA",
       "lang": "en",
       "name": "Americas",
       "sub_keys": "Maladath~Skyfury~Ashkandi~Atiesh~Azuresong~Benediction~Bloodsail Buccaneers~Earthfury~Faerlina~Grobbulus~Mankrik~Myzrael~Old Blanchy~Pagle~Sulfuras~Westfall~Whitemane~Windseeker"
     },
-    "WCW/US/Maladath": {
-      "id": "data/WCW/US/Maladath",
+    "WCW/NA/Maladath": {
+      "id": "data/WCW/NA/Maladath",
       "key": "Maladath",
       "sub_isoids": "MLH",
       "lang": "en"
     },
-    "WCW/US/Skyfury": {
-        "id": "data/WCW/US/Skyfury",
+    "WCW/NA/Skyfury": {
+        "id": "data/WCW/NA/Skyfury",
         "key": "Skyfury",
         "sub_isoids": "SKY",
         "lang": "en"
       },
 
-    "WCW/US/Ashkandi": {
-        "id": "data/WCW/US/Ashkandi",
+    "WCW/NA/Ashkandi": {
+        "id": "data/WCW/NA/Ashkandi",
         "key": "Ashkandi",
         "sub_isoids": "AHI",
         "lang": "en"
       },
-    "WCW/US/Atiesh": {
-        "id": "data/WCW/US/Atiesh",
+    "WCW/NA/Atiesh": {
+        "id": "data/WCW/NA/Atiesh",
         "key": "Atiesh",
         "sub_isoids": "ATH",
         "lang": "en"
       },
-    "WCW/US/Azuresong": {
-        "id": "data/WCW/US/Azuresong",
+    "WCW/NA/Azuresong": {
+        "id": "data/WCW/NA/Azuresong",
         "key": "Azuresong",
         "sub_isoids": "AZG",
         "lang": "en"
       },
-    "WCW/US/Benediction": {
-        "id": "data/WCW/US/Benediction",
+    "WCW/NA/Benediction": {
+        "id": "data/WCW/NA/Benediction",
         "key": "Benediction",
         "sub_isoids": "BEN",
         "lang": "en"
       },
-    "WCW/US/Bloodsail Buccaneers": {
-        "id": "data/WCW/US/Bloodsail Buccaneers",
+    "WCW/NA/Bloodsail Buccaneers": {
+        "id": "data/WCW/NA/Bloodsail Buccaneers",
         "key": "Bloodsail Buccaneers",
         "sub_isoids": "BBL",
         "lang": "en"
       },
-    "WCW/US/Earthfury": {
-        "id": "data/WCW/US/Earthfury",
+    "WCW/NA/Earthfury": {
+        "id": "data/WCW/NA/Earthfury",
         "key": "Earthfury",
         "sub_isoids": "EFY",
         "lang": "en"
       },
-    "WCW/US/Faerlina": {
-        "id": "data/WCW/US/Faerlina",
+    "WCW/NA/Faerlina": {
+        "id": "data/WCW/NA/Faerlina",
         "key": "Faerlina",
         "sub_isoids": "FAA",
         "lang": "en"
       },
-    "WCW/US/Grobbulus": {
-        "id": "data/WCW/US/Grobbulus",
+    "WCW/NA/Grobbulus": {
+        "id": "data/WCW/NA/Grobbulus",
         "key": "Grobbulus",
         "sub_isoids": "GRS",
         "lang": "en"
       },
-    "WCW/US/Mankrik": {
-        "id": "data/WCW/US/Mankrik",
+    "WCW/NA/Mankrik": {
+        "id": "data/WCW/NA/Mankrik",
         "key": "Mankrik",
         "sub_isoids": "MNK",
         "lang": "en"
       },
-    "WCW/US/Myzrael": {
-        "id": "data/WCW/US/Myzrael",
+    "WCW/NA/Myzrael": {
+        "id": "data/WCW/NA/Myzrael",
         "key": "Myzrael",
         "sub_isoids": "MYL",
         "lang": "en"
       },
-    "WCW/US/Old Blanchy": {
-        "id": "data/WCW/US/Old Blanchy",
+    "WCW/NA/Old Blanchy": {
+        "id": "data/WCW/NA/Old Blanchy",
         "key": "Old Blanchy",
         "sub_isoids": "OBY",
         "lang": "en"
       },
-    "WCW/US/Pagle": {
-        "id": "data/WCW/US/Pagle",
+    "WCW/NA/Pagle": {
+        "id": "data/WCW/NA/Pagle",
         "key": "Pagle",
         "sub_isoids": "PGE",
         "lang": "en"
       },
-    "WCW/US/Sulfuras": {
-        "id": "data/WCW/US/Sulfuras",
+    "WCW/NA/Sulfuras": {
+        "id": "data/WCW/NA/Sulfuras",
         "key": "Sulfuras",
         "sub_isoids": "SLS",
         "lang": "en"
       },
-    "WCW/US/Westfall": {
-        "id": "data/WCW/US/Westfall",
+    "WCW/NA/Westfall": {
+        "id": "data/WCW/NA/Westfall",
         "key": "Westfall",
         "sub_isoids": "WEL",
         "lang": "en"
       },
 
-    "WCW/US/Whitemane": {
-        "id": "data/WCW/US/Whitemane",
+    "WCW/NA/Whitemane": {
+        "id": "data/WCW/NA/Whitemane",
         "key": "Whitemane",
         "sub_isoids": "WHE",
         "lang": "en"
       },
       
-    "WCW/US/Windseeker": {
-        "id": "data/WCW/US/Windseeker",
+    "WCW/NA/Windseeker": {
+        "id": "data/WCW/NA/Windseeker",
         "key": "Windseeker",
         "sub_isoids": "WIR",
         "lang": "en"
@@ -147,9 +146,7 @@
           "key": "EU",
           "lang": "en",
           "name": "Europe",
-          "sub_keys": "Giantstalker~Thekal~Amnennar~Ashbringer~Auberdine~Earthshaker~Everlook~Gehennas~Venoxis~Firemaw~Golemagg~Hydraxian Waterlords~Lakeshire~Mandokir~Mirage Raceway~Mograine~Nethergarde Keep~Patchwerk~Pyrewood Village~Razorfen~Sulfuron~Transcendence~",
-          "zip": "699",
-          "zipex": "69900-000,69999-999"
+          "sub_keys": "Giantstalker~Thekal~Amnennar~Ashbringer~Auberdine~Earthshaker~Everlook~Gehennas~Venoxis~Firemaw~Golemagg~Hydraxian Waterlords~Lakeshire~Mandokir~Mirage Raceway~Mograine~Nethergarde Keep~Patchwerk~Pyrewood Village~Razorfen~Sulfuron~Transcendence~"
         },
     "WCW/EU/Giantstalker": {
           "id": "data/WCW/EU/Giantstalker",
@@ -297,9 +294,7 @@
             "key": "OC",
             "lang": "en",
             "name": "Oceania",
-            "sub_keys": "Arugal~Remulos~Yojamba",
-            "zip": "699",
-            "zipex": "69900-000,69999-999"
+            "sub_keys": "Arugal~Remulos~Yojamba"
         }, 
         "WCW/OC/Arugal": {
             "id": "data/WCW/OC/Arugal",
@@ -320,7 +315,4 @@
             "lang": "en"
           }
 
-
 }
-    
-    
